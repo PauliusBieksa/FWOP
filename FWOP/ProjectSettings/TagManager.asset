@@ -15,7 +15,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - player
   - 
   - 
   - 
@@ -46,6 +46,9 @@ TagManager:
     locked: 0
   - name: back_limbs
     uniqueID: 725860621
+    locked: 0
+  - name: head
+    uniqueID: 679683403
     locked: 0
   - name: torso
     uniqueID: 341813123
