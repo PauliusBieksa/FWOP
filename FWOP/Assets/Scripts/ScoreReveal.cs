@@ -17,6 +17,7 @@ public class ScoreReveal : MonoBehaviour
     public float finalHeight;
     public float startHeight;
     public GameObject hideableJudges;
+    public bool triggered = false;
 
     private void OnEnable()
     {
@@ -32,7 +33,10 @@ public class ScoreReveal : MonoBehaviour
 
     void RevealScores()
     {
-        StartCoroutine(RevealSequence());
+        if(!triggered){
+            triggered = true;
+            StartCoroutine(RevealSequence());
+        }
     }
 
     IEnumerator RevealSequence()
