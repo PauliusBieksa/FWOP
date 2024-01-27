@@ -79,7 +79,7 @@ public class ScoreCalculator : MonoBehaviour
 
     int GetEntrySpeedScore()
     {
-        return Mathf.RoundToInt((diverBody.velocity.magnitude / maxPossibleVelocity) * 10);
+        return Mathf.Clamp(Mathf.RoundToInt((diverBody.velocity.magnitude / maxPossibleVelocity) * 10), 0, 10);
     }
 
     int GetEntryAngleScore()
