@@ -33,7 +33,6 @@ public class ScoreCalculator : MonoBehaviour
             if (spinningClockwise)
             {
                 ++spinCount;
-                Debug.Log("clockwise spin");
             }
             spinningClockwise = true;
         }
@@ -43,7 +42,6 @@ public class ScoreCalculator : MonoBehaviour
             if (spinningClockwise)
             {
                 ++spinCount;
-                Debug.Log("counterclockwise spin");
 
             }
             spinningClockwise = false;
