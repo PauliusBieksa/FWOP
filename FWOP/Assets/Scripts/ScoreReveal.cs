@@ -16,6 +16,7 @@ namespace DefaultNamespace
         public float scorePauseLength;
         public float finalHeight;
         public float startHeight;
+        public GameObject hideableJudges;
 
         private void OnEnable()
         {
@@ -35,13 +36,24 @@ namespace DefaultNamespace
 
         IEnumerator RevealSequence()
         {
+            hideableJudges.SetActive(true);
             Drumroll.Play();
             yield return new WaitForSeconds(drumrollLength);
-            while (Scorecards[0].rectTransform.position.y < finalHeight)
+            
+
+            foreach (var scorecard in Scorecards)
             {
-                float newY = Mathf.Lerp(startHeight, finalHeight, 0.5f);
-                Scorecards[0].rectTransform.position = new Vector3(Scorecards[0].transform.position.x, newY, Scorecards[0].transform.position.z);
+                yield return new WaitForSeconds(scorePauseLength);
+                float timeElapsed = 0f;
+                while (scorecard.rectTransform.position.y < finalHeight)
+                {
+                    yield return null;
+                    timeElapsed += Time.deltaTime;
+                    float newY = Mathf.Lerp(startHeight, finalHeight, timeElapsed / 0.5f);
+                    scorecard.rectTransform.position = new Vector3(scorecard.transform.position.x, newY, scorecard.transform.position.z);
+                }
             }
+            
         }
     }
     
