@@ -20,30 +20,9 @@ public class player_controller : MonoBehaviour
     public HingeJoint2D foot1_object;
     public HingeJoint2D foot2_object;
 
-    private JointMotor2D shoulder1_motor;
-    private JointMotor2D shoulder2_motor;
-    private JointMotor2D elbow1_motor;
-    private JointMotor2D elbow2_motor;
-    private JointMotor2D hip1_motor;
-    private JointMotor2D hip2_motor;
-    private JointMotor2D knee1_motor;
-    private JointMotor2D knee2_motor;
-    private JointMotor2D foot1_motor;
-    private JointMotor2D foot2_motor;
-
     // Start is called before the first frame update
     void Start()
     {
-        shoulder1_motor = shoulder1_object.motor;
-        shoulder2_motor = shoulder2_object.motor;
-        elbow1_motor = elbow1_object.motor;
-        elbow2_motor = elbow2_object.motor;
-        hip1_motor = hip1_object.motor;
-        hip2_motor = hip2_object.motor;
-        knee1_motor = knee1_object.motor;
-        knee2_motor = knee2_object.motor;
-        foot1_motor = foot1_object.motor;
-        foot2_motor = foot2_object.motor;
     }
     // Update is called once per frame
     void Update()
