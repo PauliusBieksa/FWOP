@@ -25,23 +25,26 @@ public class ScoreCalculator : MonoBehaviour
 
     void Update()
     {
-        currentAngle = diverBody.transform.rotation.z;
-        
+        currentAngle = diverBody.transform.rotation.eulerAngles.z;
+        Debug.Log(currentAngle);
         //If gone from 4th quadrant to 1st this frame then spinning clockwise
-        if (prevAngle % 360 > 270 && currentAngle % 360 < 90)
+        if (prevAngle > 270 && currentAngle < 90)
         {
             if (spinningClockwise)
             {
                 ++spinCount;
+                Debug.Log("clockwise spin");
             }
             spinningClockwise = true;
         }
         //If gone from 1st to 4th quadrant this frame then spinning counterclockwise
-        if (prevAngle % 360 < 90 && currentAngle % 360 > 270)
+        if (prevAngle < 90 && currentAngle > 270)
         {
             if (spinningClockwise)
             {
                 ++spinCount;
+                Debug.Log("counterclockwise spin");
+
             }
             spinningClockwise = false;
         }
