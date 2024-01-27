@@ -59,3 +59,6 @@ TagManager:
   - name: front_limbs2
     uniqueID: 218388007
     locked: 0
+  - name: foreground
+    uniqueID: 2627241533
+    locked: 0
