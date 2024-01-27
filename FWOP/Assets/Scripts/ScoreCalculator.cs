@@ -1,18 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class ScoreCalculator : MonoBehaviour
 {
-    public static UnityAction onDiveEnd;
+    public static UnityAction OnDiveEnd;
     public float maxPossibleVelocity;
     public int maxScoreableSpins;
     
     
     [SerializeField] 
-    private List<SpriteRenderer> scorecards;
+    private List<TextMeshProUGUI> scorecardTexts;
 
     [SerializeField] 
     private Rigidbody2D diverBody;
@@ -47,29 +48,41 @@ public class ScoreCalculator : MonoBehaviour
 
         prevAngle = currentAngle;
     }
+
+    //Debug Only
+    public void ForceOnDiveEnd()
+    {
+        OnDiveEnd.Invoke();
+    }
     
     void OnEnable()
     {
-        onDiveEnd += ScoreDive;
+        OnDiveEnd += ScoreDive;
     }
 
     void ScoreDive()
     {
-        
+        int spinScore = GetSpinScore();
+        int speedScore = GetEntrySpeedScore();
+        int formScore = GetEntryAngleScore();
+
+        scorecardTexts[0].text = $"{spinScore}";
+        scorecardTexts[1].text = $"{speedScore}";
+        scorecardTexts[2].text = $"{formScore}";
     }
 
     int GetSpinScore()
     {
-        var unboundSpinScore = Mathf.RoundToInt((spinCount / maxScoreableSpins) * 10);
+        var unboundSpinScore = Mathf.RoundToInt((spinCount / (float)maxScoreableSpins) * 10);
         return Mathf.Clamp(unboundSpinScore, 0, 10) ;
     }
 
-    int GetEntrySpeed()
+    int GetEntrySpeedScore()
     {
         return Mathf.RoundToInt((diverBody.velocity.magnitude / maxPossibleVelocity) * 10);
     }
 
-    int GetEntryAngle()
+    int GetEntryAngleScore()
     {
         float verticality = Mathf.Abs(Vector3.Dot(Vector3.up, diverBody.transform.up));
         return Mathf.RoundToInt(verticality * 10);
@@ -77,6 +90,6 @@ public class ScoreCalculator : MonoBehaviour
 
     private void OnDisable()
     {
-        onDiveEnd -= ScoreDive;
+        OnDiveEnd -= ScoreDive;
     }
 }
