@@ -58,18 +58,18 @@ public class ScoreCalculator : MonoBehaviour
         
     }
 
-    int getSpinScore()
+    int GetSpinScore()
     {
         var unboundSpinScore = Mathf.RoundToInt((spinCount / maxScoreableSpins) * 10);
         return Mathf.Clamp(unboundSpinScore, 0, 10) ;
     }
 
-    int getEntrySpeed()
+    int GetEntrySpeed()
     {
         return Mathf.RoundToInt((diverBody.velocity.magnitude / maxPossibleVelocity) * 10);
     }
 
-    int getEntryAngle()
+    int GetEntryAngle()
     {
         float verticality = Mathf.Abs(Vector3.Dot(Vector3.up, diverBody.transform.up));
         return Mathf.RoundToInt(verticality * 10);
