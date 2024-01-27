@@ -72,7 +72,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 .idea/*
+*/.idea/*
 *.vsconfig
 *.sln
 *.csproj
+*.vscode
 FWOP/ProjectSettings/ProjectVersion.txt
