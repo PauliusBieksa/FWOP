@@ -43,18 +43,14 @@ public class drag : MonoBehaviour
         {
             return;
         }
-        Debug.Log(rb.velocity.y);
         Bounds bounds = Colliders[0].bounds;
         for (int i = 1; i < Colliders.Length; i++)  
         {
             bounds.Encapsulate(Colliders[i].bounds);
         }
-        Debug.Log($"bound:{bounds.extents.x * 2}, dists:{dist_left.dist + dist_right.dist}");
 
         Drag = new Vector2(0, (bounds.extents.x * 2) * (bounds.extents.x * 2) * drag_multiplier * -rb.velocity.y);
         OnDragCalc?.Invoke(Drag);
-       // Drag = new Vector2(0, (dist_left.dist + dist_right.dist) * (dist_left.dist + dist_right.dist) * drag_multiplier * -rb.velocity.y);
-
     }
 
     private void ApplyDrag(Vector2 drag)
