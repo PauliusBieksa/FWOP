@@ -15,7 +15,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - player
   - 
   - 
   - 
@@ -40,4 +40,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: back_limbs2
+    uniqueID: 507911089
+    locked: 0
+  - name: back_limbs
+    uniqueID: 725860621
+    locked: 0
+  - name: head
+    uniqueID: 679683403
+    locked: 0
+  - name: torso
+    uniqueID: 341813123
+    locked: 0
+  - name: front_limbs
+    uniqueID: 3944420925
+    locked: 0
+  - name: front_limbs2
+    uniqueID: 218388007
     locked: 0
