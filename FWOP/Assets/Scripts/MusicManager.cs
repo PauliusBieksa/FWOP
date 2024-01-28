@@ -35,7 +35,8 @@ public class MusicManager : MonoBehaviour
         {
             attemptCount++;
         }
-        
+
+        MusicSource.loop = false;
         MusicSource.clip = musicTracks[attemptCount];
         MusicSource.Play();
         StartCoroutine(WaitForLoopSection());
