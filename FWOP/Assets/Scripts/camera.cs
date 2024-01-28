@@ -19,6 +19,8 @@ public class camera : MonoBehaviour
     float CamSizeStart;
     public float CamSizeEnd = 6;
 
+    public float CamYMin = 10f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,7 +69,8 @@ public class camera : MonoBehaviour
         }
         else
         {
-            transform.position = new Vector3(transform.position.x, player_torso.position.y, transform.position.z) + offset;
+            transform.position = new Vector3(transform.position.x, Mathf.Max( player_torso.position.y, CamYMin), transform.position.z) + offset;
         }
+        
     }
 }
