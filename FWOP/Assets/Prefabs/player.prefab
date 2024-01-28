@@ -2207,14 +2207,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1739102160316932237}
-  player_speed: 20
-  player_torque: 5
+  player_speed: 40
+  player_torque: 20
   player_joint_force: 200
-  pre_jump: 0
-  animation_start_pos: {x: 0, y: 0, z: 0}
-  animation_end_pos: {x: 0, y: 0, z: 0}
-  pre_animation_timer: 0
-  animation_timer: 0
+  pre_jump: 1
+  animation_start_pos: {x: -11, y: 100.8, z: 0}
+  animation_end_pos: {x: -3.5, y: 100.8, z: 0}
+  pre_animation_timer: 4
+  animation_timer: 3
+  board_roll_up_speed: -380
   shoulder1_object: {fileID: 5456101915407881196}
   shoulder2_object: {fileID: 4374849498826469027}
   elbow1_object: {fileID: 6063875281299144119}

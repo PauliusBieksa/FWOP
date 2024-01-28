@@ -106,7 +106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da616f390b725e84081e0e06036b5576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_torso: {fileID: 0}
+  offset: {x: 0, y: -4, z: 0}
+  scroll_up_start_pos: {x: 0, y: -2, z: -10}
+  scroll_up_end_pos: {x: 0, y: 100, z: -10}
+  pre_scroll_up_override_timer: 2
+  CamSizeEnd: 6
 --- !u!1 &4537551392191111656
 GameObject:
   m_ObjectHideFlags: 0
