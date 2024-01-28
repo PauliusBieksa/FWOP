@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4416654406177210048}
   - component: {fileID: 5701954907977595403}
   - component: {fileID: 3245208038235857859}
+  - component: {fileID: 5035975005224310050}
   m_Layer: 0
   m_Name: ball - tennis
   m_TagString: Obstacle
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4313155643001360287}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.4, y: 6.6, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1537488, y: 0.1537488, z: 0.1537488}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -120,3 +121,30 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.3949999
+--- !u!50 &5035975005224310050
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4313155643001360287}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
