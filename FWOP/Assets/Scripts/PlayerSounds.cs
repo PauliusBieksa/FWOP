@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,6 +12,11 @@ public class PlayerSounds : MonoBehaviour
     public List<AudioClip> Screams;
     public List<AudioClip> Splashes;
     public List<AudioClip> Splats;
+
+    public void RecieveChildCollison(Collision2D other)
+    {
+        OnCollisionEnter2D(other);
+    }
     
     
     private void OnCollisionEnter2D(Collision2D other)

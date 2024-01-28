@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class BubbleUpCollision : MonoBehaviour
 {
-    private Collider2D parentCollider;
+    private BubbleUpCollision parent;
+    private PlayerSounds playersounds;
     void Start()
     {
-        parentCollider = GetComponentInParent<Collider2D>();
+        parent = GetComponentInParent<BubbleUpCollision>();
+        playersounds = GetComponent<PlayerSounds>();
     }
-    public void OnCollisionEnter2D(Collision2D other)
+
+    public void BubbleUp(Collision2D other)
     {
-        parentCollider.O
+        if (parent == null)
+        {
+            playersounds.RecieveChildCollison(other);
+        }
+        parent.BubbleUp(other);
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        BubbleUp(other);
     }
 }
 
