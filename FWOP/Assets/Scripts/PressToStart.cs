@@ -47,10 +47,9 @@ public class PressToStart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Text.color.a);
         if(TakingInput && Input.anyKeyDown)
         {
-            // ~~~ load game scene
+            SceneManager.LoadSceneAsync("Instructions");
         }
     }
 }
