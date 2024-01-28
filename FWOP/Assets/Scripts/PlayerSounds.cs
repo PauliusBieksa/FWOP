@@ -13,6 +13,8 @@ public class PlayerSounds : MonoBehaviour
     public List<AudioClip> Splashes;
     public List<AudioClip> Splats;
 
+    private bool landed = false;
+
     public void ReceiveChildCollision(Collision2D other)
     {
         OnCollisionEnter2D(other);
@@ -32,16 +34,19 @@ public class PlayerSounds : MonoBehaviour
             AudioSource.Play();
         }
         
-        if (other.gameObject.CompareTag("Pool"))
+        if (other.gameObject.CompareTag("Pool") && !landed)
         {
+            
             AudioSource.clip = Splashes[Random.Range(0, Splashes.Count-1)];
             AudioSource.Play();
+            landed = true;
         }
         
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground") && !landed)
         {
             AudioSource.clip = Splats[Random.Range(0, Splats.Count-1)];
             AudioSource.Play();
+            landed = true;
         }
         
     }
