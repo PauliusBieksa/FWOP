@@ -50,7 +50,7 @@ public class ScoreReveal : MonoBehaviour
         {
             DrumrollPLayer.Play();
             float timeElapsed = 0f;
-            while (scorecard.rectTransform.position.y < finalHeight)
+            while (scorecard.rectTransform.position.y < (finalHeight - 0.0001f))
             {
                 yield return null;
                 
