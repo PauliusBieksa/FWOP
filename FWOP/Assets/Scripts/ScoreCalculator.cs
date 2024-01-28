@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public class ScoreCalculator : MonoBehaviour
 {
-    public static UnityAction OnDiveEnd;
+    public static UnityAction<bool> OnDiveEnd;
     public float maxPossibleVelocity;
     public int maxScoreableSpins;
     
@@ -23,17 +23,19 @@ public class ScoreCalculator : MonoBehaviour
     private float prevAngle = 0;
     private bool spinningClockwise;
 
+    private bool alreadyScored;
+
     void Update()
     {
         currentAngle = diverBody.transform.rotation.eulerAngles.z;
         //If gone from 4th quadrant to 1st this frame then spinning clockwise
         if (prevAngle > 270 && currentAngle < 90)
         {
-            if (spinningClockwise)
+            if (!spinningClockwise)
             {
                 ++spinCount;
             }
-            spinningClockwise = true;
+            spinningClockwise = false;
         }
         //If gone from 1st to 4th quadrant this frame then spinning counterclockwise
         if (prevAngle < 90 && currentAngle > 270)
@@ -43,7 +45,7 @@ public class ScoreCalculator : MonoBehaviour
                 ++spinCount;
 
             }
-            spinningClockwise = false;
+            spinningClockwise = true;
         }
 
         prevAngle = currentAngle;
@@ -52,7 +54,7 @@ public class ScoreCalculator : MonoBehaviour
     //Debug Only
     public void ForceOnDiveEnd()
     {
-        OnDiveEnd.Invoke();
+        OnDiveEnd.Invoke(true);
     }
     
     void OnEnable()
@@ -60,15 +62,29 @@ public class ScoreCalculator : MonoBehaviour
         OnDiveEnd += ScoreDive;
     }
 
-    void ScoreDive()
+    void ScoreDive(bool landedSafe)
     {
-        int spinScore = GetSpinScore();
-        int speedScore = GetEntrySpeedScore();
-        int formScore = GetEntryAngleScore();
+        if (alreadyScored)
+        {
+            return;
+        }
+        
+        int spinScore = 0;
+        int speedScore = 0;
+        int formScore = 0;
+        
+        if(landedSafe)
+        {
+            spinScore = GetSpinScore();
+            speedScore = GetEntrySpeedScore(); 
+            formScore = GetEntryAngleScore();
+        }
 
         scorecardTexts[0].text = $"{spinScore}";
         scorecardTexts[1].text = $"{speedScore}";
         scorecardTexts[2].text = $"{formScore}";
+
+        alreadyScored = true;
     }
 
     int GetSpinScore()

@@ -31,7 +31,7 @@ public class ScoreReveal : MonoBehaviour
         ScoreCalculator.OnDiveEnd -= RevealScores;
     }
 
-    void RevealScores()
+    void RevealScores(bool landedSafe)
     {
         if(!triggered){
             triggered = true;

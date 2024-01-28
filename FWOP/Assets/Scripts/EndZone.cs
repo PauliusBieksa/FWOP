@@ -7,6 +7,6 @@ public class EndZone : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        ScoreCalculator.OnDiveEnd.Invoke();
+        ScoreCalculator.OnDiveEnd.Invoke(true);
     }
 }
