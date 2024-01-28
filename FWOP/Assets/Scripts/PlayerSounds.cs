@@ -13,7 +13,7 @@ public class PlayerSounds : MonoBehaviour
     public List<AudioClip> Splashes;
     public List<AudioClip> Splats;
 
-    public void RecieveChildCollison(Collision2D other)
+    public void ReceiveChildCollision(Collision2D other)
     {
         OnCollisionEnter2D(other);
     }
