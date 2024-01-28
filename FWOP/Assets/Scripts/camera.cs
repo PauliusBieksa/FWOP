@@ -6,7 +6,7 @@ public class camera : MonoBehaviour
 {
     public Vector3 offset;
     public Vector3 scroll_up_start_pos;
-    public Vector3 scroll_up_end_pos;
+    private Vector3 scroll_up_end_pos;
     public float pre_scroll_up_override_timer;
 
     private Transform player_torso;
@@ -30,6 +30,7 @@ public class camera : MonoBehaviour
 
         ThisCam = GetComponent<Camera>();
         CamSizeStart = ThisCam.orthographicSize;
+        scroll_up_end_pos = new Vector3(0, player_script.plank.position.y, -10);
     }
 
     // Update is called once per frame

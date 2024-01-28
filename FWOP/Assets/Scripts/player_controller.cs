@@ -5,13 +5,16 @@ using UnityEngine;
 public class player_controller : MonoBehaviour
 {
     public Rigidbody2D player;
+    public Transform plank;
     public float player_speed;
     public float player_torque;
     public float player_joint_force;
 
     public bool pre_jump = true;
-    public Vector3 animation_start_pos;
-    public Vector3 animation_end_pos;
+    private Vector3 animation_start_pos;
+    private Vector3 animation_end_pos;
+    public float roll_up_start_pos;
+    public float roll_up_end_pos;
     public float pre_animation_timer;
     public float animation_timer;
     public float board_roll_up_speed;
@@ -50,6 +53,9 @@ public class player_controller : MonoBehaviour
         foot2_object.motor = mot_cclk;
 
         animation_legth = animation_timer;
+
+        animation_start_pos = new Vector3(roll_up_start_pos, plank.position.y + 1.8f, 0);
+        animation_end_pos = new Vector3(roll_up_end_pos, plank.position.y + 1.8f, 0);
     }
     // Update is called once per frame
     void FixedUpdate()
