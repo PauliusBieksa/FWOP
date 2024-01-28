@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public class ScoreCalculator : MonoBehaviour
 {
-    public static UnityAction OnDiveEnd;
+    public static UnityAction<bool> OnDiveEnd;
     public float maxPossibleVelocity;
     public int maxScoreableSpins;
     
@@ -52,7 +52,7 @@ public class ScoreCalculator : MonoBehaviour
     //Debug Only
     public void ForceOnDiveEnd()
     {
-        OnDiveEnd.Invoke();
+        OnDiveEnd.Invoke(true);
     }
     
     void OnEnable()
@@ -60,11 +60,18 @@ public class ScoreCalculator : MonoBehaviour
         OnDiveEnd += ScoreDive;
     }
 
-    void ScoreDive()
+    void ScoreDive(bool landedSafe)
     {
-        int spinScore = GetSpinScore();
-        int speedScore = GetEntrySpeedScore();
-        int formScore = GetEntryAngleScore();
+        int spinScore = 0;
+        int speedScore = 0;
+        int formScore = 0;
+        
+        if(landedSafe)
+        {
+            spinScore = GetSpinScore();
+            speedScore = GetEntrySpeedScore(); 
+            formScore = GetEntryAngleScore();
+        }
 
         scorecardTexts[0].text = $"{spinScore}";
         scorecardTexts[1].text = $"{speedScore}";
