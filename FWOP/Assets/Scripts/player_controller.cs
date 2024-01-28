@@ -54,8 +54,8 @@ public class player_controller : MonoBehaviour
 
         animation_legth = animation_timer;
 
-        animation_start_pos = new Vector3(roll_up_start_pos, plank.position.y + 1.8f, 0);
-        animation_end_pos = new Vector3(roll_up_end_pos, plank.position.y + 1.8f, 0);
+        animation_start_pos = new Vector3(roll_up_start_pos, plank.position.y + 1.9f, 0);
+        animation_end_pos = new Vector3(roll_up_end_pos, plank.position.y + 1.9f, 0);
     }
     // Update is called once per frame
     void FixedUpdate()
