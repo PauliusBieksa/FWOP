@@ -26,7 +26,6 @@ public class ScoreCalculator : MonoBehaviour
     void Update()
     {
         currentAngle = diverBody.transform.rotation.eulerAngles.z;
-        Debug.Log(currentAngle);
         //If gone from 4th quadrant to 1st this frame then spinning clockwise
         if (prevAngle > 270 && currentAngle < 90)
         {
