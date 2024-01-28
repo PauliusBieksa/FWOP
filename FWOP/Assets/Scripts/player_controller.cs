@@ -14,6 +14,7 @@ public class player_controller : MonoBehaviour
     public Vector3 animation_end_pos;
     public float pre_animation_timer;
     public float animation_timer;
+    public float board_roll_up_speed;
 
     public HingeJoint2D shoulder1_object;
     public HingeJoint2D shoulder2_object;
@@ -57,11 +58,24 @@ public class player_controller : MonoBehaviour
         {
             if (pre_animation_timer <= 0)
             {
-                if (animation_timer <= 0) pre_jump = false;
+                if (animation_timer <= 0)
+                {
+                    if (Input.GetButton("ball_up"))
+                    {
+                        player.constraints = RigidbodyConstraints2D.None;
+                        pre_jump = false;
+                    }
+                    else
+                    {
+                        transform.position = animation_end_pos;
+                        player.constraints = RigidbodyConstraints2D.FreezeRotation;
+                        return;
+                    }
+                }
                 animation_timer -= Time.deltaTime;
 
                 transform.position = Vector3.Lerp(animation_start_pos, animation_end_pos, 1 - (animation_timer / animation_legth));
-                player.angularVelocity = -220;
+                player.angularVelocity = board_roll_up_speed;
             }
             else
             {
