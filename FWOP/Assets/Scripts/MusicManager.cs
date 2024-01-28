@@ -24,7 +24,6 @@ public class MusicManager : MonoBehaviour
             Destroy(this);
         }
     }
-    ]
 
     void Start()
     {
